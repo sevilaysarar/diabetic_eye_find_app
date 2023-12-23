@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAIJKovL6w9SoLt2jWOVJQQF_ZHaMfbC7s</string>
+	<key>GCM_SENDER_ID</key>
+	<string>28609037409</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.diabeticEyeApp.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>diabetic-eye-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>diabetic-eye-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:28609037409:ios:b56eec45f37511cd5ad620</string>
+</dict>
+</plist>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "28609037409",
+    "project_id": "diabetic-eye-app",
+    "storage_bucket": "diabetic-eye-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28609037409:android:64ac7e454308343d5ad620",
+        "android_client_info": {
+          "package_name": "com.example.diabetic_eye_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp8rg3dvkqG_Q-adhj1H2-hlhsllpmLkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
