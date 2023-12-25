@@ -1,13 +1,25 @@
 import 'package:diabetic_eye_app/pages/sign_in.dart';
+import 'package:diabetic_eye_app/themes/T2BottomNavigation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
+bool shouldUseFirebaseEmulator = false;
+
+late final FirebaseApp app;
+late final FirebaseAuth auth;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
+  app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  auth = FirebaseAuth.instanceFor(app: app);
+
+  if (shouldUseFirebaseEmulator) {
+    await auth.useAuthEmulator('localhost', 9099);
+  }
   runApp(MainPage());
 }
 
@@ -44,7 +56,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: T10SignIn(),
+      body: FirebaseAuth.instance.currentUser == null
+          ? T10SignIn()
+          : T6BottomNavigation(),
     );
   }
 }

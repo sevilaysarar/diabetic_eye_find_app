@@ -1,4 +1,5 @@
 import 'package:diabetic_eye_app/themes/T2BottomNavigation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -78,6 +79,35 @@ class EditText extends StatefulWidget {
   }
 }
 
+Future<String?> login({
+  required String email,
+  required String password,
+  required BuildContext context
+}) async {
+  print('login');
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+          builder: (context) => T6BottomNavigation()),
+          (Route<dynamic> route) => false,
+    );
+    return 'Success';
+  } on FirebaseAuthException catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(e.message.toString()),
+      backgroundColor: Colors.deepOrange,
+    ),
+    );
+
+  } catch (e) {
+    return e.toString();
+  }
+}
 class EditTextState extends State<EditText> {
   @override
   Widget build(BuildContext context) {
@@ -194,6 +224,9 @@ class T10SignIn extends StatefulWidget {
 }
 
 class T10SignInState extends State<T10SignIn> {
+  final TextEditingController _userName = TextEditingController();
+  final TextEditingController _passowrd = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -215,21 +248,19 @@ class T10SignInState extends State<T10SignIn> {
               EditText(
                 text: theme10_username,
                 isPassword: false,
+                mController:_userName ,
               ),
               SizedBox(height: spacing_standard_new),
               EditText(
                 text: theme10_password,
                 isSecure: true,
+                mController: _passowrd,
               ),
               SizedBox(height: spacing_xlarge),
               AppButtons(
                 onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => T6BottomNavigation()),
-                    (Route<dynamic> route) => false,
-                  );
+                  login(email: _userName.text, password: _passowrd.text,context: context);
+
                 },
                 textContent: theme10_lbl_sign_in,
               ),

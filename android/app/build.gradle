@@ -64,6 +64,4 @@ flutter {
     source '../..'
 }
 
-dependencies {
-        compile 'com.google.firebase:firebase-core:9.0.2'
-}
+dependencies {}
