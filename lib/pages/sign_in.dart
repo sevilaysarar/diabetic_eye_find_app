@@ -79,12 +79,10 @@ class EditText extends StatefulWidget {
   }
 }
 
-Future<String?> login({
-  required String email,
-  required String password,
-  required BuildContext context
-}) async {
-  print('login');
+Future<String?> login(
+    {required String email,
+    required String password,
+    required BuildContext context}) async {
   try {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: email,
@@ -92,22 +90,22 @@ Future<String?> login({
     );
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(
-          builder: (context) => T6BottomNavigation()),
-          (Route<dynamic> route) => false,
+      MaterialPageRoute(builder: (context) => T6BottomNavigation()),
+      (Route<dynamic> route) => false,
     );
     return 'Success';
   } on FirebaseAuthException catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(e.message.toString()),
-      backgroundColor: Colors.deepOrange,
-    ),
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(e.message.toString()),
+        backgroundColor: Colors.deepOrange,
+      ),
     );
-
   } catch (e) {
     return e.toString();
   }
 }
+
 class EditTextState extends State<EditText> {
   @override
   Widget build(BuildContext context) {
@@ -248,7 +246,7 @@ class T10SignInState extends State<T10SignIn> {
               EditText(
                 text: theme10_username,
                 isPassword: false,
-                mController:_userName ,
+                mController: _userName,
               ),
               SizedBox(height: spacing_standard_new),
               EditText(
@@ -259,8 +257,10 @@ class T10SignInState extends State<T10SignIn> {
               SizedBox(height: spacing_xlarge),
               AppButtons(
                 onPressed: () {
-                  login(email: _userName.text, password: _passowrd.text,context: context);
-
+                  login(
+                      email: _userName.text,
+                      password: _passowrd.text,
+                      context: context);
                 },
                 textContent: theme10_lbl_sign_in,
               ),
